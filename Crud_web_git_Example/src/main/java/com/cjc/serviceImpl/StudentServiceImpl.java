@@ -1,5 +1,32 @@
 package com.cjc.serviceImpl;
 
-public class StudentServiceImpl {
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.cjc.model.Student;
+import com.cjc.repository.StudentRepository;
+import com.cjc.serviceI.StudentServiceI;
+
+@Service
+public class StudentServiceImpl implements StudentServiceI
+{
+	@Autowired
+	StudentRepository sr;
+
+	@Override
+	public void saveStudent(Student s) 
+	{
+		sr.save(s);
+		
+	}
+
+	@Override
+	public List getStudents() 
+	{
+		
+		return sr.findAll();
+	}
 
 }
